@@ -108,7 +108,7 @@ NAMA_FILE_DATA = "flights-ruh-cleaned.csv"
 @st.cache_data
 def load_data(path):
     try:
-        data = pd.read_csv(path, na_values=['\\N', 'Unknown']) 
+        data = pd.read_csv(path, na_values=['\\N']) 
         for col in ['airline.name', 'destination_airport_name', 'flight_type', 'movement.terminal']:
              if col in data.columns:
                  data[col] = data[col].fillna('Unknown')
@@ -336,4 +336,5 @@ if data_bersih is not None:
 
 else: 
     st.warning("Data gagal dimuat. Harap periksa nama file dan lokasinya.")
+
     st.caption("Sumber Data: King Khalid International Airport (KKIA) Flights Dataset | Diunduh dari Kaggle | Oleh: Mohammed Alsubaie")
